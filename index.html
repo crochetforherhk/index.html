@@ -3,481 +3,457 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KNIT & CROCHET HAVEN | Premium Yarn & Tools</title>
-  <!-- 外部资源：Tailwind样式、图标、PayPal SDK -->
- <!-- Cloudflare全球稳定CDN 适配香港网络 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.16/tailwind.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- PayPal支付官方脚本 -->
-<script src="https://www.paypal.com/sdk/js?client-id=AW5wZ8lN2QHf4aG3n6a38G7z1X9aQ8z6V5bN7mK8j9H0G1F2E3D4C5B6A7S8D9F0G1H2&currency=USD"></script>
-  
-  <!-- Rhode风格定制配置 -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#F5F0EB',    // 主色调：Rhode米白
-            secondary: '#E8D8C8',  // 辅助色：浅裸粉
-            accent: '#8C7853',     // 强调色：复古棕
-            dark: '#2A2420',       // 文字黑
-            light: '#FFFFFF',      // 纯白
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-  
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .rhode-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-      .rhode-transition { transition: all 0.3s ease; }
-      .text-balance { text-wrap: balance; }
-    }
+  <title>Carolines-Yarns | Premium Yarn & Crochet Tools</title>
+  <style>
     * {
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
     body {
       background-color: #F5F0EB;
       color: #2A2420;
+      line-height: 1.6;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      padding: 1rem 4%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .nav-wrap {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-wrap a {
+      color: #2A2420;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .nav-wrap a:hover {
+      color: #8C7853;
+    }
+    .user-bar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    #loginBtn {
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #2A2420;
+    }
+    #loginBtn:hover {
+      color: #8C7853;
+    }
+    /* 登录弹窗 最高层级 */
+    #loginModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+    }
+    .modal-box {
+      background: #fff;
+      width: 90%;
+      max-width: 450px;
+      padding: 32px;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+    #closeLogin {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #666;
+    }
+    .modal-box h2 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .form-item {
+      margin-bottom: 16px;
+    }
+    .form-item label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .form-item input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    #submitLogin {
+      width: 100%;
+      padding: 14px;
+      background: #2A2420;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 8px;
+      transition: 0.3s;
+    }
+    #submitLogin:hover {
+      background: #8C7853;
+    }
+    .tip-text {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 12px;
+      color: #666;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 4%;
+    }
+    .hero-banner {
+      width: 100%;
+      height: 70vh;
+      background: url('https://images.unsplash.com/photo-1514826786893-f4fff6caeff4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .hero-banner h1 {
+      font-size: clamp(2.5rem,5vw,4rem);
+      margin-bottom: 16px;
+    }
+    .hero-banner p {
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+    .shop-btn {
+      padding: 14px 36px;
+      background: #fff;
+      color: #2A2420;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .shop-btn:hover {
+      background: #8C7853;
+      color: #fff;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 16px;
+    }
+    .product-name {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .product-price {
+      color: #8C7853;
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+    .add-cart-btn {
+      width: 100%;
+      padding: 10px;
+      background: #2A2420;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .add-cart-btn:hover {
+      background: #8C7853;
+    }
+    /* 员工后台样式 */
+    #employeeView {
+      display: none;
+      background: #fff;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .btn {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #fff;
+    }
+    .btn-primary {
+      background: #8C7853;
+    }
+    .btn-danger {
+      background: #dc3545;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th,td {
+      border: 1px solid #eee;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #F5F0EB;
+    }
+    footer {
+      background: #2A2420;
+      color: #fff;
+      padding: 40px 4%;
+      margin-top: 80px;
     }
   </style>
 </head>
-
-<body class="min-h-screen flex flex-col">
-  <!-- 全局登录状态管理 -->
-  <script>
-    // 本地存储持久登录（刷新不登出）
-    const getCurrentUser = () => JSON.parse(localStorage.getItem('user'));
-    const setCurrentUser = (user) => localStorage.setItem('user', JSON.stringify(user));
-    const logout = () => {
-      localStorage.removeItem('user');
-      window.location.reload();
-    };
-
-    // 模拟用户数据（员工：admin/admin  客户：user/user）
-    const users = [
-      { id: 1, email: 'admin', password: 'admin', role: 'employee', name: 'Store Manager' },
-      { id: 2, email: 'user', password: 'user', role: 'customer', name: 'Sarah Johnson' }
-    ];
-
-    // 商品数据
-    let products = JSON.parse(localStorage.getItem('products')) || [
-      { id: 1, name: 'Premium Cotton Yarn', price: 12.99, image: 'https://images.unsplash.com/photo-1586985450211-65162310c49a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', stock: 50, category: 'Yarn' },
-      { id: 2, name: 'Ergonomic Crochet Hook Set', price: 24.99, image: 'https://images.unsplash.com/photo-1611506545247-16977815546a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', stock: 30, category: 'Tools' },
-      { id: 3, name: 'Bamboo Knitting Needles', price: 18.99, image: 'https://images.unsplash.com/photo-1514824693693-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', stock: 25, category: 'Tools' },
-      { id: 4, name: 'Wool Blend Yarn Pack', price: 29.99, image: 'https://images.unsplash.com/photo-1620721893666-62879d16f25a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', stock: 40, category: 'Yarn' }
-    ];
-
-    // 保存商品到本地存储
-    const saveProducts = () => localStorage.setItem('products', JSON.stringify(products));
-  </script>
-
-  <!-- 导航栏 -->
-  <header class="sticky top-0 bg-light z-50 rhode-shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <!-- Logo -->
-      <a href="#" class="text-2xl font-bold tracking-tight text-dark">KNIT HAVEN</a>
-      
-      <!-- 导航菜单 -->
-      <nav class="hidden md:flex space-x-8">
-        <a href="#shop" class="text-dark hover:text-accent rhode-transition">SHOP</a>
-        <a href="#yarn" class="text-dark hover:text-accent rhode-transition">YARN</a>
-        <a href="#tools" class="text-dark hover:text-accent rhode-transition">TOOLS</a>
-        <a href="#about" class="text-dark hover:text-accent rhode-transition">ABOUT</a>
-      </nav>
-      
-      <!-- 用户按钮 -->
-      <div class="flex items-center space-x-4">
-        <button id="loginBtn" class="flex items-center text-dark hover:text-accent rhode-transition">
-          <i class="fa fa-user mr-1"></i>
-          <span id="userStatus">SIGN IN</span>
-        </button>
-        <button class="flex items-center text-dark hover:text-accent rhode-transition">
-          <i class="fa fa-shopping-bag"></i>
-        </button>
-      </div>
+<body>
+  <header>
+    <a href="#" class="logo">Carolines-Yarns</a>
+    <nav class="nav-wrap">
+      <a href="#shop">SHOP</a>
+      <a href="#yarn">YARN</a>
+      <a href="#tools">TOOLS</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+    <div class="user-bar">
+      <button id="loginBtn">SIGN IN</button>
+      <span>🛍️</span>
     </div>
   </header>
 
-  <!-- 主内容区 -->
-  <main class="flex-grow container mx-auto px-4 py-8">
-    <!-- 登录弹窗 -->
-    <div id="loginModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-[9999]">
-  <div class="bg-light p-8 rounded-lg rhode-shadow w-full max-w-md relative">
-    <button id="closeLogin" class="absolute top-4 right-4 text-gray-500 hover:text-dark">
-      <i class="fa fa-times"></i>
-    </button>
-    <h2 class="text-2xl font-semibold mb-6 text-center">SIGN IN</h2>
-    <form id="loginForm" class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium mb-1">EMAIL / USERNAME</label>
-        <input type="text" id="email" class="w-full p-3 border border-gray-200 rounded focus:outline-none focus:border-accent" required>
+  <!-- 登录弹窗 原生固定最高层级 -->
+  <div id="loginModal">
+    <div class="modal-box">
+      <button id="closeLogin">×</button>
+      <h2>SIGN IN</h2>
+      <div class="form-item">
+        <label>EMAIL / USERNAME</label>
+        <input type="text" id="userAccount" required>
       </div>
-      <div>
-        <label class="block text-sm font-medium mb-1">PASSWORD</label>
-        <input type="password" id="password" class="w-full p-3 border border-gray-200 rounded focus:outline-none focus:border-accent" required>
+      <div class="form-item">
+        <label>PASSWORD</label>
+        <input type="password" id="userPwd" required>
       </div>
-      <button type="submit" class="w-full bg-dark text-light py-3 rounded hover:bg-accent rhode-transition">SIGN IN</button>
-      <p class="text-xs text-center mt-2">Demo: Employee (admin/admin) | Customer (user/user)</p>
-    </form>
+      <button id="submitLogin">SIGN IN</button>
+      <p class="tip-text">Employee: admin / admin | Customer: user / user</p>
+    </div>
   </div>
-</div>
 
-    <!-- 客户前台（默认显示） -->
-    <div id="customerView" class="block">
-      <!-- Hero Banner -->
-      <section class="relative h-[70vh] flex items-center justify-center overflow-hidden mb-16">
-        <div class="absolute inset-0 bg-cover bg-center opacity-90" style="background-image: url('https://images.unsplash.com/photo-1514826786893-f4fff6caeff4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="relative z-10 text-center text-light">
-          <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold mb-4">PREMIUM YARN & CROCHET TOOLS</h1>
-          <p class="text-[clamp(1rem,2vw,1.25rem)] mb-8 max-w-2xl mx-auto">Luxury materials for your perfect knitting & crochet projects</p>
-          <a href="#shop" class="bg-light text-dark px-8 py-3 rounded hover:bg-accent hover:text-light rhode-transition">SHOP NOW</a>
-        </div>
+  <main>
+    <!-- 客户英文前台 -->
+    <div id="customerView">
+      <section class="hero-banner">
+        <h1>PREMIUM YARN & CROCHET TOOLS</h1>
+        <p>Luxury materials for your knitting & crochet handmade projects</p>
+        <a href="#shop" class="shop-btn">SHOP NOW</a>
       </section>
-
-      <!-- 商品展示区 -->
-      <section id="shop" class="mb-16">
-        <h2 class="text-3xl font-semibold mb-8 text-center">FEATURED PRODUCTS</h2>
-        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- 商品由JS动态加载 -->
-        </div>
-      </section>
-
-      <!-- 购物车 & PayPal支付 -->
-      <section id="cartSection" class="hidden mb-16 p-8 bg-light rounded-lg rhode-shadow">
-        <h2 class="text-2xl font-semibold mb-6">YOUR CART</h2>
-        <div id="cartItems" class="mb-6"></div>
-        <div class="flex justify-between items-center border-t pt-4">
-          <h3 class="text-xl font-semibold">TOTAL: $<span id="cartTotal">0.00</span></div>
-          <div id="paypalButtonContainer" class="w-full max-w-sm mt-4"></div>
-        </div>
+      <section id="shop">
+        <h2 class="section-title">FEATURED PRODUCTS</h2>
+        <div class="product-grid" id="productGrid"></div>
       </section>
     </div>
 
-    <!-- 员工后台（中文，默认隐藏） -->
-    <div id="employeeView" class="hidden p-8 bg-light rounded-lg rhode-shadow">
-      <h2 class="text-2xl font-bold mb-6 text-primary-800">员工管理面板</h2>
-      <div class="flex gap-4 mb-6">
-        <button id="addProductBtn" class="bg-accent text-white px-4 py-2 rounded hover:bg-dark transition">添加新商品</button>
-        <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">退出登录</button>
+    <!-- 员工中文后台 -->
+    <div id="employeeView">
+      <h2>员工商品管理后台</h2>
+      <div class="btn-group">
+        <button class="btn btn-primary" id="addProBtn">添加新商品</button>
+        <button class="btn btn-danger" id="logoutBtn">退出登录</button>
       </div>
-
-      <!-- 商品编辑表格 -->
-      <div class="overflow-x-auto">
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-primary">
-              <th class="border p-2 text-left">商品图片</th>
-              <th class="border p-2 text-left">商品名称</th>
-              <th class="border p-2 text-left">价格</th>
-              <th class="border p-2 text-left">库存</th>
-              <th class="border p-2 text-left">分类</th>
-              <th class="border p-2 text-left">操作</th>
-            </tr>
-          </thead>
-          <tbody id="productTableBody">
-            <!-- 商品数据由JS动态加载 -->
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 添加/编辑商品表单 -->
-      <div id="productFormModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-white p-6 rounded-lg w-full max-w-md">
-          <h3 class="text-xl font-bold mb-4" id="formTitle">添加商品</h3>
-          <form id="productForm" class="space-y-4">
-            <input type="hidden" id="productId">
-            <div>
-              <label class="block text-sm font-medium mb-1">商品名称</label>
-              <input type="text" id="productName" class="w-full p-2 border rounded" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1">价格</label>
-              <input type="number" step="0.01" id="productPrice" class="w-full p-2 border rounded" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1">图片链接</label>
-              <input type="url" id="productImage" class="w-full p-2 border rounded" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1">库存</label>
-              <input type="number" id="productStock" class="w-full p-2 border rounded" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1">分类</label>
-              <select id="productCategory" class="w-full p-2 border rounded" required>
-                <option value="Yarn">毛线</option>
-                <option value="Tools">工具</option>
-              </select>
-            </div>
-            <div class="flex gap-2">
-              <button type="submit" class="flex-1 bg-accent text-white p-2 rounded">保存</button>
-              <button type="button" id="closeProductForm" class="flex-1 bg-gray-300 p-2 rounded">取消</button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>商品图片</th>
+            <th>商品名称</th>
+            <th>价格</th>
+            <th>库存</th>
+            <th>分类</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="proTableBody"></tbody>
+      </table>
     </div>
   </main>
 
-  <!-- 页脚 -->
-  <footer class="bg-dark text-light py-8">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <h3 class="text-lg font-semibold mb-4">KNIT HAVEN</h3>
-          <p class="text-gray-300">Premium yarn and tools for creative crafting</p>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-4">SHOP</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li><a href="#" class="hover:text-white rhode-transition">Yarn</a></li>
-            <li><a href="#" class="hover:text-white rhode-transition">Crochet Tools</a></li>
-            <li><a href="#" class="hover:text-white rhode-transition">Knitting Needles</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-4">CUSTOMER SERVICE</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li><a href="#" class="hover:text-white rhode-transition">Contact Us</a></li>
-            <li><a href="#" class="hover:text-white rhode-transition">Shipping</a></li>
-            <li><a href="#" class="hover:text-white rhode-transition">Returns</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-        <p>© 2025 Knit & Crochet Haven. All rights reserved.</p>
-      </div>
-    </div>
+  <footer>
+    <p>© 2026 Carolines-Yarns All Rights Reserved</p>
   </footer>
 
-  <!-- 核心功能JS -->
   <script>
+    // 本地持久存储 刷新不登出
+    const storage = window.localStorage;
+    const getUser = () => JSON.parse(storage.getItem('userInfo'));
+    const setUser = (u) => storage.setItem('userInfo', JSON.stringify(u));
+    const clearUser = () => storage.removeItem('userInfo');
+
+    // 账号库
+    const userList = [
+      {account:'admin',pwd:'admin',role:'employee',name:'管理员'},
+      {account:'user',pwd:'user',role:'customer',name:'客户'}
+    ];
+
+    // 默认商品数据
+    let productList = JSON.parse(storage.getItem('productData')) || [
+      {id:1,name:'Premium Cotton Yarn',price:12.99,img:'https://images.unsplash.com/photo-1586985450211-65162310c49a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',stock:50,category:'Yarn'},
+      {id:2,name:'Ergonomic Crochet Hook Set',price:24.99,img:'https://images.unsplash.com/photo-1611506545247-16977815546a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',stock:30,category:'Tools'}
+    ];
+    const saveProduct = () => storage.setItem('productData', JSON.stringify(productList));
+
     // DOM元素
     const loginBtn = document.getElementById('loginBtn');
     const loginModal = document.getElementById('loginModal');
     const closeLogin = document.getElementById('closeLogin');
-    const loginForm = document.getElementById('loginForm');
-    const userStatus = document.getElementById('userStatus');
+    const submitLogin = document.getElementById('submitLogin');
+    const accountInput = document.getElementById('userAccount');
+    const pwdInput = document.getElementById('userPwd');
     const customerView = document.getElementById('customerView');
     const employeeView = document.getElementById('employeeView');
     const productGrid = document.getElementById('productGrid');
-    const productTableBody = document.getElementById('productTableBody');
-    const addProductBtn = document.getElementById('addProductBtn');
-    const productFormModal = document.getElementById('productFormModal');
-    const productForm = document.getElementById('productForm');
-    const formTitle = document.getElementById('formTitle');
-    const closeProductForm = document.getElementById('closeProductForm');
+    const proTableBody = document.getElementById('proTableBody');
     const logoutBtn = document.getElementById('logoutBtn');
 
     // 初始化页面
-    document.addEventListener('DOMContentLoaded', () => {
-      const user = getCurrentUser();
-      if (user) {
-        userStatus.textContent = user.role === 'employee' ? 'EMPLOYEE' : 'MY ACCOUNT';
-        if (user.role === 'employee') {
-          customerView.classList.add('hidden');
-          employeeView.classList.remove('hidden');
-          loadProductsForEmployee();
+    function initPage() {
+      const loginUser = getUser();
+      if(loginUser) {
+        loginBtn.innerText = loginUser.role === 'employee' ? 'EMPLOYEE' : 'MY ACCOUNT';
+        if(loginUser.role === 'employee') {
+          customerView.style.display = 'none';
+          employeeView.style.display = 'block';
+          renderEmployeeTable();
         } else {
-          renderProducts();
-          initPayPalButton();
+          renderShopProduct();
         }
       } else {
-        renderProducts();
-        initPayPalButton();
+        renderShopProduct();
       }
+    }
 
-      // 登录弹窗控制
-      loginBtn.addEventListener('click', () => loginModal.classList.remove('hidden'));
-      closeLogin.addEventListener('click', () => loginModal.classList.add('hidden'));
+    // 打开登录弹窗
+    loginBtn.onclick = function() {
+      loginModal.style.display = 'flex';
+    }
+    // 关闭弹窗
+    closeLogin.onclick = function() {
+      loginModal.style.display = 'none';
+    }
 
-      // 登录表单提交
-      loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        
-        const user = users.find(u => u.email === email && u.password === password);
-        if (user) {
-          setCurrentUser(user);
-          loginModal.classList.add('hidden');
-          window.location.reload();
-        } else {
-          alert('Invalid credentials!');
-        }
-      });
-
-      // 员工功能
-      logoutBtn.addEventListener('click', logout);
-      addProductBtn.addEventListener('click', () => {
-        formTitle.textContent = '添加新商品';
-        productForm.reset();
-        productId.value = '';
-        productFormModal.classList.remove('hidden');
-      });
-      closeProductForm.addEventListener('click', () => productFormModal.classList.add('hidden'));
-
-      // 商品表单提交
-      productForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const product = {
-          id: productId.value || Date.now(),
-          name: productName.value,
-          price: parseFloat(productPrice.value),
-          image: productImage.value,
-          stock: parseInt(productStock.value),
-          category: productCategory.value
-        };
-
-        if (productId.value) {
-          // 编辑商品
-          const index = products.findIndex(p => p.id == productId.value);
-          products[index] = product;
-        } else {
-          // 添加商品
-          products.push(product);
-        }
-        
-        saveProducts();
-        loadProductsForEmployee();
-        productFormModal.classList.add('hidden');
-      });
-    });
+    // 登录提交
+    submitLogin.onclick = function() {
+      const acc = accountInput.value.trim();
+      const pwd = pwdInput.value.trim();
+      const targetUser = userList.find(item => item.account === acc && item.pwd === pwd);
+      if(targetUser) {
+        setUser(targetUser);
+        alert('Login Success!');
+        location.reload();
+      } else {
+        alert('Wrong Username or Password');
+      }
+    }
 
     // 渲染客户商品列表
-    function renderProducts() {
+    function renderShopProduct() {
       productGrid.innerHTML = '';
-      products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'bg-light rounded-lg overflow-hidden rhode-shadow hover:scale-105 rhode-transition';
-        productCard.innerHTML = `
-          <div class="h-64 overflow-hidden">
-            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
-          </div>
-          <div class="p-4">
-            <h3 class="font-medium text-lg mb-1">${product.name}</h3>
-            <p class="text-accent font-semibold mb-3">$${product.price.toFixed(2)}</p>
-            <button onclick="addToCart(${product.id})" class="w-full bg-dark text-light py-2 rounded hover:bg-accent rhode-transition">ADD TO CART</button>
+      productList.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img class="product-img" src="${item.img}" alt="${item.name}">
+          <div class="product-info">
+            <h3 class="product-name">${item.name}</h3>
+            <p class="product-price">$${item.price.toFixed(2)}</p>
+            <button class="add-cart-btn">ADD TO CART</button>
           </div>
         `;
-        productGrid.appendChild(productCard);
-      });
+        productGrid.appendChild(card);
+      })
     }
 
-    // 加载商品到员工表格
-    function loadProductsForEmployee() {
-      productTableBody.innerHTML = '';
-      products.forEach(product => {
-        const row = document.createElement('tr');
-        row.className = 'border-b hover:bg-gray-50';
-        row.innerHTML = `
-          <td class="border p-2"><img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover"></td>
-          <td class="border p-2">${product.name}</td>
-          <td class="border p-2">$${product.price.toFixed(2)}</td>
-          <td class="border p-2">${product.stock}</td>
-          <td class="border p-2">${product.category}</td>
-          <td class="border p-2">
-            <button onclick="editProduct(${product.id})" class="bg-blue-500 text-white px-2 py-1 rounded mr-2">编辑</button>
-            <button onclick="deleteProduct(${product.id})" class="bg-red-500 text-white px-2 py-1 rounded">删除</button>
+    // 员工商品表格
+    function renderEmployeeTable() {
+      proTableBody.innerHTML = '';
+      productList.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><img src="${item.img}" width="80" height="80" style="object-fit:cover"></td>
+          <td>${item.name}</td>
+          <td>$${item.price}</td>
+          <td>${item.stock}</td>
+          <td>${item.category}</td>
+          <td>
+            <button class="btn btn-primary edit-btn" data-id="${item.id}">编辑</button>
+            <button class="btn btn-danger del-btn" data-id="${item.id}">删除</button>
           </td>
         `;
-        productTableBody.appendChild(row);
-      });
+        proTableBody.appendChild(tr);
+      })
     }
 
-    // 编辑商品
-    window.editProduct = function(id) {
-      const product = products.find(p => p.id == id);
-      if (product) {
-        formTitle.textContent = '编辑商品';
-        productId.value = product.id;
-        productName.value = product.name;
-        productPrice.value = product.price;
-        productImage.value = product.image;
-        productStock.value = product.stock;
-        productCategory.value = product.category;
-        productFormModal.classList.remove('hidden');
-      }
+    // 退出登录
+    logoutBtn.onclick = function() {
+      clearUser();
+      location.reload();
     }
 
-    // 删除商品
-    window.deleteProduct = function(id) {
-      if (confirm('确定要删除这个商品吗？')) {
-        products = products.filter(p => p.id != id);
-        saveProducts();
-        loadProductsForEmployee();
-      }
-    }
-
-    // 购物车功能
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    function addToCart(productId) {
-      const product = products.find(p => p.id === productId);
-      const item = cart.find(i => i.id === productId);
-      
-      if (item) {
-        item.quantity++;
-      } else {
-        cart.push({ ...product, quantity: 1 });
-      }
-      
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCart();
-      document.getElementById('cartSection').classList.remove('hidden');
-    }
-
-    function updateCart() {
-      const cartItems = document.getElementById('cartItems');
-      const cartTotal = document.getElementById('cartTotal');
-      let total = 0;
-      
-      cartItems.innerHTML = '';
-      cart.forEach(item => {
-        total += item.price * item.quantity;
-        const cartItem = document.createElement('div');
-        cartItem.className = 'flex justify-between items-center border-b pb-2 mb-2';
-        cartItem.innerHTML = `
-          <div>
-            <p class="font-medium">${item.name} x ${item.quantity}</p>
-            <p class="text-sm text-gray-600">$${item.price.toFixed(2)} each</p>
-          </div>
-          <p>$${(item.price * item.quantity).toFixed(2)}</p>
-        `;
-        cartItems.appendChild(cartItem);
-      });
-      
-      cartTotal.textContent = total.toFixed(2);
-    }
-
-    // PayPal支付初始化
-    function initPayPalButton() {
-      paypal.Buttons({
-        createOrder: (data, actions) => {
-          return actions.order.create({
-            purchase_units: [{ amount: { value: document.getElementById('cartTotal').textContent } }]
-          });
-        },
-        onApprove: (data, actions) => {
-          return actions.order.capture().then(details => {
-            alert('Payment successful! Thank you, ' + details.payer.name.given_name);
-            cart = [];
-            localStorage.removeItem('cart');
-            updateCart();
-            document.getElementById('cartSection').classList.add('hidden');
-          });
-        },
-        onError: err => {
-          alert('Payment failed. Please try again.');
-          console.error(err);
-        }
-      }).render('#paypalButtonContainer');
-    }
+    // 页面加载执行
+    window.onload = initPage;
   </script>
 </body>
 </html>
